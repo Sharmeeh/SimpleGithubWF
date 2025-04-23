@@ -1,12 +1,13 @@
 name: simple-action
 on: push
 jobs:
- my-job: 
+ run-python: 
   runs-on: ubuntu-latest
   steps:
     - name:  set-up Python  
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.13' 
-        run: python my_script.py
+        python-version: '3.11' 
+    - name: Run inline python command
+      run: |
+         python -c "print('Hello from Github actions!')"
